@@ -21,3 +21,7 @@ func (a *App) Start(port string) {
 	log.Println("Server is listening on http://localhost:" + a.server.Port)
 	a.server.Listen(a.Router)
 }
+
+func (a *App) Add(RouteGroup *http.Router) {
+	a.MergeRouter(RouteGroup)
+}

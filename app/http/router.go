@@ -30,6 +30,12 @@ func NewRouter() *Router {
 	return router
 }
 
+func (r *Router) MergeRouter(other *Router) {
+    for key, route := range other.routes {
+        r.routes[key] = route
+    }
+}
+
 func (r *Router) addRoute(method Method, path string, handler func(req *Request, res *Response)) {
 	route := routeKey{Method: method, Path: path}
 	r.routes[route] = &Route{
