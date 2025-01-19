@@ -1,6 +1,7 @@
 package app
 
 import (
+	"http-server/app/config"
 	"http-server/app/http"
 	"log"
 )
@@ -18,6 +19,8 @@ func Application() *App {
 
 func (a *App) Start(port string) {
 	a.server = http.NewHttpServer("localhost", port)
+	a.UseGlobalPreMiddlewares(config.GlobalPreMiddlewares())
+	a.UseGlobalPostMiddlewares(config.GlobalPostMiddlewares())
 	log.Println("Server is listening on http://localhost:" + a.server.Port)
 	a.server.Listen(a.Router)
 }

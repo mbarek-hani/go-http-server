@@ -57,8 +57,8 @@ func (r *Response) JsonResponse(payload interface{}) {
 	r.body = body
 }
 
-func (r *Response) HttpResponse(payload string) {
-	r.SetStatusCode(StatusOK)
+func (r *Response) HttpResponse(payload string, code StatusCode) {
+	r.SetStatusCode(code)
 	r.SetHeader("Date", time.Now().UTC().Format(time.RFC1123))
 	r.SetHeader("Server", "GoHTTP/1.0")
 	r.SetHeader("Connection", "close")

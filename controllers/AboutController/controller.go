@@ -5,5 +5,5 @@ import (
 )
 
 func Index(req *http.Request, res *http.Response) {
-		res.HttpResponse("Hello from about page")
+		res.HttpResponse("Hello from about page", http.StatusOK)
 }
